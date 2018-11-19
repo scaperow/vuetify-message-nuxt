@@ -1,6 +1,6 @@
 {
   "name": "vuetify-message",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Simple message service based on vuetify snackbar component.",
   "author": "aGuegu <weihong.guan@gmail.com>",
   "license": "MIT",
