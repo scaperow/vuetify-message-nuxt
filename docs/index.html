@@ -5,56 +5,62 @@
   <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
   <link href="https://unpkg.com/vuetify/dist/vuetify.min.css" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
-  <style>
-    body { padding: 10px; }
-  </style>
 </head>
 <body>
   <div id="app">
     <v-app>
       <v-content>
-        <h1>Vuetify Toast Demo</h1>
-        <v-btn @click="success('Hello')" color="primary">Show 'hello'</v-btn>
-        <v-btn @click="error('Error')" color="primary">Show 'error'</v-btn>
-        <v-btn @click="showToast({timeout: 10000, text: 'This is an information.', icon: 'info'})" color="primary">Show toast for 10 sec</v-btn>
-        <br>
-        <br>
-        <pre>
-          vuetifyToast.success('Hello');
-
-          vuetifyToast.error('Error');
-
-          vuetifyToast.show({
-            text: 'This is an information.',
-            color: 'info',
-            timeout: 10000,
-            icon: 'info'
-          });
-        </pre>
-        <br>
-        <br>
-        Documentation: <a href="https://github.com/pzs/vuetify-toast">https://github.com/pzs/vuetify-toast</a>
-      </v-content>
+      <v-container>
+        <v-layout row wrap>
+          <v-flex xs12>
+            <v-text-field label="Message" v-model="text"></v-text-field>
+          </v-flex>
+          <v-flex xs12>
+            <v-btn @click="message('primary')" color="primary">Primary</v-btn>
+            <v-btn @click="message('secondary')" color="secondary">Secondary</v-btn>
+            <v-btn @click="message('success')" color="success">Success</v-btn>
+            <v-btn @click="message('info')" color="info">Info</v-btn>
+            <v-btn @click="message('warning')" color="warning">Warning</v-btn>
+            <v-btn @click="message('error')" color="error">Error</v-btn>
+          </v-flex>
+            <v-btn @click="success" color="success">Success</v-btn>
+            <v-btn @click="info" color="info">info</v-btn>
+            <v-btn @click="warning" color="warning">Warning</v-btn>
+            <v-btn @click="error" color="error">Error</v-btn>
+          <v-flex xs12>
+          </v-flex>
+        </v-layout>
+      </v-container>
+    </v-content>
     </v-app>
   </div>
 
   <script src="https://unpkg.com/vue/dist/vue.js"></script>
   <script src="https://unpkg.com/vuetify/dist/vuetify.js"></script>
-  <script src="https://unpkg.com/vuetify-toast"></script>
+  <script src="https://unpkg.com/vuetify-message"></script>
   <script>
     new Vue({
       el: '#app',
+      data: () => ({
+        text: 'Hello, world.',
+      }),
       methods: {
-        success: function(text) {
-          vuetifyToast.success(text);
+        message(color) {
+          this.$message({ text: this.text, color });
         },
-        error: function(text) {
-          vuetifyToast.error(text);
+        success() {
+          this.$message.success(this.text);
         },
-        showToast: function(opt) {
-          vuetifyToast.show(opt);
-        }
-      }
+        info() {
+          this.$message.info(this.text);
+        },
+        warning() {
+          this.$message.warning(this.text);
+        },
+        error() {
+          this.$message.error(this.text);
+        },
+      },
     });
   </script>
 </body>
