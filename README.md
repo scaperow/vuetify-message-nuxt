@@ -2,6 +2,8 @@
 
 > Simple toast service based on [vuetify](https://github.com/vuetifyjs/vuetify) snackbar component.
 
+> Demo: https://aguegu.github.io/vuetify-message/
+
 > Inspired by
 - [vuetify-toast](https://github.com/pzs/vuetify-toast)
 - [vuetify-confirm](https://github.com/yariksav/vuetify-confirm)
@@ -19,8 +21,16 @@ npm install --save vuetify-message
 
 ```js
 import VuetifyMessage from 'vuetify-message';
-Vue.use(VuetifyMessage);
+Vue.use(VuetifyMessage, [defaultOptions]);
 ```
+or
+```
+Vue.use(VuetifyMessage, {
+  timeout: 1000,
+  property: '$message',
+});
+```
+property: '$message' will create property with this name in Vue prototype
 
 ## Documentation
 
@@ -42,14 +52,6 @@ Vue.use(VuetifyMessage);
 - `y` (String), as [snackbar usage](https://vuetifyjs.com/en/components/snackbars#usage), `top`, `bottom` or `''`, default `'top'`
 - `mode` (String), as [snackbar usage](https://vuetifyjs.com/en/components/snackbars#usage), `multi-line`, `vertical` or `''`, default `''`
 
-### Default options
-
-You can override the default options at any time:
-
-```js
-vuetifyToast.defaultOptions.timeout = 5000;
-```
-
 ## Development
 
 ### Build
@@ -58,21 +60,6 @@ Bundle the js of to the `dist` folder:
 
 ```bash
 npm run build
-```
-
-## Publishing
-
-The `prepublish` hook will ensure dist files are created before publishing. This
-way you don't need to commit them in your repository.
-
-```bash
-# Bump the version first
-# It'll also commit it and create a tag
-npm version
-# Push the bumped package and tags
-git push --follow-tags
-# Ship it
-npm publish
 ```
 
 ## License

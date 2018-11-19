@@ -60,7 +60,7 @@ export default {
   watch: {
     active(newVal, oldVal) {
       if (!newVal && oldVal) {
-        this.$destory();
+        this.$el.addEventListener('transitionend', this.destroyElement);
       }
     },
   },
@@ -74,6 +74,11 @@ export default {
 
     close() {
       this.active = false;
+    },
+
+    destroyElement() {
+      this.$el.removeEventListener('transitionend', this.destroyElement);
+      this.$destroy();
     },
   },
 };
