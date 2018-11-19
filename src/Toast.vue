@@ -1,28 +1,21 @@
 <template>
-
   <v-snackbar
-    :timeout="timeout"
-    :color="color"
     v-model="active"
     class="application"
-    @click="dismiss">
-
+    :timeout="timeout"
+    :color="color"
+    @click="dismiss"
+  >
     <v-icon
+      v-if="icon.length"
       dark
       left
-      v-if="icon.length > 0">
-      {{ icon }}
-    </v-icon>
-
+    >{{ icon }}</v-icon>
     {{ text }}
-
   </v-snackbar>
-
 </template>
 
-
 <script>
-
 export default {
 
   data() {
@@ -31,27 +24,42 @@ export default {
       text: '',
       icon: '',
       color: 'info',
-      timeout: 3000,
+      timeout: 1000,
       dismissible: true,
     };
   },
 
-  methods: {
-    show(options = {}) {
-      if (this.active) {
-        this.close();
-        this.$nextTick(() => this.show(options));
-        return;
+  watch: {
+    active(newVal, oldVal) {
+      console.log(newVal, oldVal); // eslint-disable-line no-console
+      console.log(this); // eslint-disable-line no-console
+      if (!newVal && oldVal) {
+        this.$destory();
+        // this.clos
       }
+    },
+  },
 
-      Object.keys(options).forEach(field => (this[field] = options[field]));
+  methods: {
+    show() {
+      // if (this.active) {
+      //   this.$nextTick(() => this.show(options));
+      //   return;
+      // }
+
+      // Object.keys(options).forEach(field => (this[field] = options[field]));
 
       this.active = true;
     },
 
     close() {
       this.active = false;
+      // this.$destroy();
     },
+    //
+    // destroy() {
+    //   this.$destory();
+    // },
 
     dismiss() {
       if (this.dismissible) {
