@@ -1,19 +1,19 @@
 {
-  "name": "vuetify-toast",
+  "name": "vuetify-message",
   "version": "0.1.0",
-  "description": "Simple toast service based on vuetify snackbar component.",
-  "author": "pzs",
+  "description": "Simple message service based on vuetify snackbar component.",
+  "author": "aGuegu <weihong.guan@gmail.com>",
   "license": "MIT",
-  "homepage": "https://github.com/pzs/vuetify-toast",
+  "homepage": "https://github.com/aguegu/vuetify-message",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pzs/vuetify-toast.git"
+    "url": "git+https://github.com/aguegu/vuetify-message.git"
   },
-  "main": "dist/vuetify-toast.cjs.js",
-  "module": "dist/vuetify-toast.m.js",
-  "browser": "dist/vuetify-toast.js",
-  "cdn": "dist/vuetify-toast.min.js",
-  "unpkg": "dist/vuetify-toast.min.js",
+  "main": "dist/vuetify-message.cjs.js",
+  "module": "dist/vuetify-message.m.js",
+  "browser": "dist/vuetify-message.js",
+  "cdn": "dist/vuetify-message.min.js",
+  "unpkg": "dist/vuetify-message.min.js",
   "files": [
     "dist",
     "src",
@@ -22,8 +22,8 @@
   ],
   "scripts": {
     "build": "npm run build:module && npm run build:browser",
-    "build:module": "bili --name vuetify-toast --format cjs,es --plugin vue",
-    "build:browser": "bili --name vuetify-toast --format umd,umd-min --module-name vuetifyToast --external vue --global.vue \"Vue\" --plugin vue",
+    "build:module": "bili --name vuetify-message --format cjs,es --plugin vue",
+    "build:browser": "bili --name vuetify-message --format umd,umd-min --module-name vuetifyToast --external vue --global.vue \"Vue\" --plugin vue",
     "lint": "eslint --ext js --ext vue src",
     "lint:fix": "npm run lint -- --fix",
     "prepublish": "npm run build"

@@ -4,6 +4,12 @@
     class="application"
     :timeout="timeout"
     :color="color"
+    :bottom="y === 'bottom'"
+    :left="x === 'left'"
+    :multi-line="mode === 'multi-line'"
+    :right="x === 'right'"
+    :top="y === 'top'"
+    :vertical="mode === 'vertical'"
   >
     <v-icon
       v-if="icon.length"
@@ -20,6 +26,18 @@ export default {
     text: {
       type: String,
       default: 'info',
+    },
+    x: {
+      type: String,
+      default: 'right',
+    },
+    y: {
+      type: String,
+      default: 'top',
+    },
+    mode: {
+      type: String,
+      default: '',
     },
     timeout: {
       type: Number,
@@ -50,7 +68,7 @@ export default {
     document.body.removeChild(this.$el);
   },
   methods: {
-    show() {
+    open() {
       this.active = true;
     },
 
