@@ -4,7 +4,6 @@
     class="application"
     :timeout="timeout"
     :color="color"
-    @click="dismiss"
   >
     <v-icon
       v-if="icon.length"
@@ -17,57 +16,48 @@
 
 <script>
 export default {
-
-  data() {
-    return {
-      active: false,
-      text: '',
-      icon: '',
-      color: 'info',
-      timeout: 1000,
-      dismissible: true,
-    };
-  },
-
-  watch: {
-    active(newVal, oldVal) {
-      console.log(newVal, oldVal); // eslint-disable-line no-console
-      console.log(this); // eslint-disable-line no-console
-      if (!newVal && oldVal) {
-        this.$destory();
-        // this.clos
-      }
+  props: {
+    text: {
+      type: String,
+      default: 'info',
+    },
+    timeout: {
+      type: Number,
+      default: 3000,
+    },
+    color: {
+      type: String,
+      default: 'info',
+    },
+    icon: {
+      type: String,
+      default: '',
     },
   },
 
+  data: () => ({
+    active: false,
+  }),
+
+  watch: {
+    active(newVal, oldVal) {
+      if (!newVal && oldVal) {
+        this.$destory();
+      }
+    },
+  },
+  destroyed() {
+    document.body.removeChild(this.$el);
+  },
   methods: {
     show() {
-      // if (this.active) {
-      //   this.$nextTick(() => this.show(options));
-      //   return;
-      // }
-
-      // Object.keys(options).forEach(field => (this[field] = options[field]));
-
       this.active = true;
     },
 
     close() {
       this.active = false;
-      // this.$destroy();
-    },
-    //
-    // destroy() {
-    //   this.$destory();
-    // },
-
-    dismiss() {
-      if (this.dismissible) {
-        this.active = false;
-      }
     },
   },
-
 };
 
 </script>
