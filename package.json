@@ -9,6 +9,12 @@
     "type": "git",
     "url": "git+https://github.com/aguegu/vuetify-message.git"
   },
+  "keywords": [
+    "notification",
+    "vuetify",
+    "toast",
+    "snackbar"
+  ],
   "main": "dist/vuetify-message.cjs.js",
   "module": "dist/vuetify-message.m.js",
   "browser": "dist/vuetify-message.js",
@@ -23,7 +29,7 @@
   "scripts": {
     "build": "npm run build:module && npm run build:browser",
     "build:module": "bili --name vuetify-message --format cjs,es --plugin vue",
-    "build:browser": "bili --name vuetify-message --format umd,umd-min --module-name vuetifyToast --external vue --global.vue \"Vue\" --plugin vue",
+    "build:browser": "bili --name vuetify-message --format umd,umd-min --module-name vuetifyMessage --external vue --global.vue \"Vue\" --plugin vue",
     "lint": "eslint --ext js --ext vue src",
     "lint:fix": "npm run lint -- --fix",
     "prepublish": "npm run build"
