@@ -8,7 +8,7 @@ function Install(Vue, options) {
   function createMessageCmp(opts) {
     const cmp = new Vue(Message);
     Object.assign(cmp, Vue.prototype[property].options || {}, opts);
-    document.body.appendChild(cmp.$mount().$el);
+    document.querySelector('#app').appendChild(cmp.$mount().$el);
     cmp.open();
     return cmp.$el;
   }
